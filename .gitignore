@@ -3,3 +3,6 @@ mon
 
 # ignore any bytecode files
 *.pyc
+
+# ignore sprites folder
+images
