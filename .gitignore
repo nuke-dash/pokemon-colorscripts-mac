@@ -1,0 +1,5 @@
+# ignore virtual env
+mon
+
+# ignore any bytecode files
+*.pyc
