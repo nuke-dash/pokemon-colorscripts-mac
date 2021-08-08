@@ -4,17 +4,13 @@ import numpy as np
 import matplotlib.pyplot as plt
 
 def main():
-    # image = io.imread('bulbasaur.png',as_gray=True)
-    image = io.imread('bulbasaur.png',as_gray=False)
-    # image = tm.rescale(image,0.5,anti_aliasing=False,channel_axis=2)
-    rows,columns,channels = image.shape
-    image = tm.resize(image,(int(rows/2),int(columns/2),channels),anti_aliasing=False,preserve_range=True)
-    image = np.repeat(image,2,1)
+    image = io.imread('ninetales.png',as_gray=False)
     print(image.shape)
+    # image = tm.rescale(image,0.5,anti_aliasing=False,channel_axis=2)  
+    image = np.repeat(image,2,1)
     image = image.astype(np.uint8)
     rows,columns,channels = image.shape
     string_matrix = np.full((rows,columns),fill_value=' ',dtype=str)
-    print(image[:,:,3].max())
     string_matrix[image[:,:,3]==255]='█'
     # string_matrix[image!=1]='█'
     # # string_matrix[image==0]='█'
