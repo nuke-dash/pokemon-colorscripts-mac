@@ -6,10 +6,13 @@ def main():
     pokemon_list = ['mimikyu','pawniard','electrode']
     for pokemon in pokemon_list:
         pokemon_art=get_pokemon_art(pokemon)
-        print(pokemon_art)
+        # print(pokemon_art)
+        write_pokemon_to_file(pokemon,pokemon_art)
         # break
 
-
+def write_pokemon_to_file(pokemon,pokemon_art):
+    with open(f'{pokemon}.txt','w') as file:
+        file.write(pokemon_art)
 
 def get_pokemon_art(pokemon):
     """ Takes the name of a pokemon and prints out its art"""
