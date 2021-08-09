@@ -12,7 +12,7 @@ function _help(){
 
     echo "Description: CLI utility to print out unicode image of a pokemon in your shell"
     echo ""
-    echo "Usage: pokedex [OPTION] [POKEMON NAME]"
+    echo "Usage: pokemon-colorscripts [OPTION] [POKEMON NAME]"
     printf "${fmt_help}" \
         "-h, --help, help" "Print this help." \
         "-l, --list, list" "Print list of all pokemon"\
@@ -21,7 +21,7 @@ function _help(){
                         a few exceptions are nidoran-f,nidoran-m,mr-mime,farfetchd,flabebe
                         type-null etc. Perhaps grep the output of --list if in
                         doubt"
-    echo "Example: 'pokedex --name pikachu'"
+    echo "Example: 'pokemon-colorscripts --name pikachu'"
 }
 
 function _show_random_pokemon(){
