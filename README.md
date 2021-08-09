@@ -23,8 +23,6 @@ demo of the program running on terminal startup.
 ![screenshot](./demo_images/demo_2.png)
 ![screenshot](./demo_images/demo_3.png)
 
-the script set up to automatically show a random pokemon on terminal startup
-
 ## Requirements
 The program itself is just a bash script that prints out custom color formatted 
 text files. You will however need a terminal with true color support, which most
