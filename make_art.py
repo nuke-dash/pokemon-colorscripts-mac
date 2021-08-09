@@ -1,5 +1,6 @@
 import skimage.io as io
 import numpy as np
+import skimage.transform as tm
 # import matplotlib.pyplot as plt
 
 def main():
@@ -20,10 +21,10 @@ def main():
             # break
 
 def write_pokemon_to_file(pokemon,pokemon_art):
-    with open(f'./pokeart/{pokemon}.txt','w') as file:
+    with open(f'./test_art/{pokemon}.txt','w') as file:
         file.write(pokemon_art)
 
-def get_pokemon_art(pokemon):
+def get_pokemon_art(pokemon,with_resize=False):
     """ Takes the name of a pokemon and prints out its art"""
 
     # string to hold the color formatted string
@@ -33,6 +34,14 @@ def get_pokemon_art(pokemon):
     path = f'./images/{pokemon}.png'
     original_image = io.imread(path)
     image_cropped = crop_image_to_content(original_image)
+    # whether to scale down images that are too large.leads to loss in quality
+    if with_resize:
+        height,width,channels = image_cropped.shape
+        height_threshold=28
+        if height>height_threshold:
+            print(f'{pokemon} too large')
+            image_cropped=tm.resize(image_cropped,(int(height/1.5),int(width/1.5),channels),anti_aliasing=False)
+            image_cropped=image_cropped*255
     # doubling on the width axis as characters are not as wide as they are high
     image = np.repeat(image_cropped,2,1)
     image = image.astype(np.uint8)

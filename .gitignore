@@ -8,4 +8,4 @@ mon
 images
 
 # ignore testing files
-test_files
+test_*
