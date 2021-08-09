@@ -1,4 +1,3 @@
-
 bulbasaur
 ivysaur
 venusaur
@@ -27,10 +26,10 @@ pikachu
 raichu
 sandshrew
 sandslash
-nidoran♀
+nidoran-f
 nidorina
 nidoqueen
-nidoran♂
+nidoran-m
 nidorino
 nidoking
 clefairy
@@ -81,7 +80,7 @@ slowpoke
 slowbro
 magnemite
 magneton
-farfetch'd
+farfetchd
 doduo
 dodrio
 seel
@@ -120,7 +119,7 @@ goldeen
 seaking
 staryu
 starmie
-mr.
+mr-mime
 scyther
 jynx
 electabuzz
@@ -437,7 +436,7 @@ skuntank
 bronzor
 bronzong
 bonsly
-mime
+mime-jr
 happiny
 chatot
 spiritomb
@@ -667,7 +666,7 @@ spewpa
 vivillon
 litleo
 pyroar
-flabébé
+flabebe
 floette
 florges
 skiddo
@@ -770,7 +769,7 @@ golisopod
 sandygast
 palossand
 pyukumuku
-type:
+type-null
 silvally
 minior
 komala
@@ -783,10 +782,10 @@ dhelmise
 jangmo-o
 hakamo-o
 kommo-o
-tapu
-tapu
-tapu
-tapu
+tapu-koko
+tapu-lele
+tapu-bulu
+tapu-fini
 cosmog
 cosmoem
 solgaleo
@@ -863,8 +862,8 @@ grimmsnarl
 obstagoon
 perrserker
 cursola
-sirfetch'd
-mr.
+sirfetchd
+mr-rime
 runerigus
 milcery
 alcremie
