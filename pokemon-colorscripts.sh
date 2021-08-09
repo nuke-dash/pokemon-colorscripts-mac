@@ -1,8 +1,8 @@
 #!/bin/sh
 
 # directory where all the art files exist
-POKEART_DIR='/opt/pokemon-colorscripts/colorscripts'
-POKELIST_DIR='/opt/pokemon-colorscripts'
+POKEART_DIR='/usr/local/opt/pokemon-colorscripts/colorscripts'
+POKELIST_DIR='/usr/local/opt/pokemon-colorscripts'
 # formatting for the help strings
 fmt_help="  %-20s\t%-54s\n"
 
