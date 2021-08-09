@@ -2,8 +2,8 @@
 
 # directory where all the art files exist
 # POKEART_DIR='./pokeart'
-POKEART_DIR='./poke_art'
-POKELIST_DIR='./scrape'
+POKEART_DIR=$HOME'/Code/asciimon/poke_art'
+POKELIST_DIR=$HOME'/Code/asciimon/scripts'
 # formatting for the help strings
 fmt_help="  %-20s\t%-54s\n"
 
