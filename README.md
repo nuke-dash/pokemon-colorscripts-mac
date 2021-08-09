@@ -12,7 +12,8 @@ Prints out colored images of pokemon onto your terminal
 ![screenshot](./demo_images/demo_3.png)
 
 ### Demo GIFs
-![demo gif](./demo_images/poke_demo.gif)
+![demo of random pokemons on terminal spawn](./demo_images/poke_demo.gif)
+![demo of program in action](./demo_images/colorscript-demo.gif)
 
 
 the script set up to automatically show a random pokemon on terminal startup
