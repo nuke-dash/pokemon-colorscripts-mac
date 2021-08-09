@@ -86,8 +86,12 @@ being symlinked to usr/bin/
 
 ## How it works
 The program itself is a simple bash script that prints out text files corresponding
-to the relevant pokemon or a randomly selected pokemon. The textfiles formatted with appropriate colors can be found in the *colorscripts* folder of the repo. The sprites were taken from [pokemondb](https://pokemondb.net/sprites) and were converted into text files using a custom python script after some preprocessing. A simple script to scrape and download all the sprites, and the python script to convert these sprites into properly formatted and colored
-text files are also included in the repo and can be found in the *scripts* folder.
+to the relevant pokemon or a randomly selected pokemon. The textfiles formatted with
+appropriate colors can be found in the *colorscripts* folder of the repo. The sprites 
+were taken from [pokemondb](https://pokemondb.net/sprites) and were converted into text 
+files using a custom python script after some preprocessing. A simple script to
+scrape and download all the sprites, and the python script to convert these sprites into properly formatted and colored
+text files are also included in the repo and can be found in the *generator_scripts* folder.
 
 ## Author
 Phoney badger:
