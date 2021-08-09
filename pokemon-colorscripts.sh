@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 # directory where all the art files exist
 POKEART_DIR='/usr/local/opt/pokemon-colorscripts/colorscripts'
