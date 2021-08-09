@@ -13,6 +13,8 @@ Prints out colored images of pokemon onto your terminal
 
 ### Demo GIFs
 ![demo gif](./demo_images/poke_demo.gif)
+
+
 the script set up to automatically show a random pokemon on terminal startup
 
 ## Installation
