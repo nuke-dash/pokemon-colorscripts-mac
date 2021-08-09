@@ -6,3 +6,6 @@ mon
 
 # ignore sprites folder
 images
+
+# ignore testing files
+test_files

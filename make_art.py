@@ -1,16 +1,21 @@
 import skimage.io as io
-import skimage.transform as tm
 import numpy as np
-import matplotlib.pyplot as plt
+# import matplotlib.pyplot as plt
 
 def main():
-    pokemon_list = ['starly','tepig','gyarados']
+    pokemon_list = ['mimikyu','pawniard','electrode']
     for pokemon in pokemon_list:
-        print_pokemon(pokemon)
-        break
+        pokemon_art=get_pokemon_art(pokemon)
+        print(pokemon_art)
+        # break
 
-def print_pokemon(pokemon):
+
+
+def get_pokemon_art(pokemon):
     """ Takes the name of a pokemon and prints out its art"""
+
+    # string to hold the color formatted string
+    pokemon_art=''
 
     # loading in image
     path = f'./images/{pokemon}.png'
@@ -28,14 +33,24 @@ def print_pokemon(pokemon):
 
     # print out the image with appropriate colors
     for i in range(rows):
-        print('')
+        pokemon_art+='\n'
+        old_color=None
         for j in range(columns):
             r,g,b=image[i,j,:3]
-            color_escape = get_color_escape(r,g,b,background=False)
-            print(f'{color_escape}{string_matrix[i,j]}',end='')
-    print('\033[0m')
+            new_color = get_color_escape(r,g,b,background=False)
+            if new_color==old_color:
+                color_escape=''
+            else:
+                color_escape=new_color
+                old_color=new_color
+
+            pokemon_art+=f'{color_escape}{string_matrix[i,j]}'
+    pokemon_art+='\033[0m'
+    return pokemon_art
+
 
 def crop_image_to_content(image):
+    """Crops the image so that all non essential space is removed"""
 
     # Finding coordinates for a bounding box of the content
     alpha_channel = image[:,:,3]
@@ -53,7 +68,8 @@ def crop_image_to_content(image):
     return cropped_image
 
 def find_top_left(alpha_channel):
-    """Finds top left corner of bounding box to crop to content"""
+    """Finds top left corner of bounding box to crop to content and returns
+       coordinates of top left"""
     # first non alpha values on each column and row. argmax works as only 0,255
     # values are present
     min_values_x = alpha_channel.argmax(axis=1)
