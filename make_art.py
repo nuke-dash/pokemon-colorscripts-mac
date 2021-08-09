@@ -3,15 +3,24 @@ import numpy as np
 # import matplotlib.pyplot as plt
 
 def main():
-    pokemon_list = ['mimikyu','pawniard','electrode']
-    for pokemon in pokemon_list:
-        pokemon_art=get_pokemon_art(pokemon)
-        # print(pokemon_art)
-        write_pokemon_to_file(pokemon,pokemon_art)
-        # break
+    # pokemon_list = ['mimikyu','pawniard','unown','pikachu']
+    with open('./scrape/nameslist.txt','r') as names_file:
+        pokemon_list = names_file.readlines()
+        for pokemon in pokemon_list:
+            pokemon=pokemon.strip()
+            try:
+                pokemon_art=get_pokemon_art(pokemon)
+            except Exception as e:
+                # raise Exception()
+                print(f"couldn't generate art for {pokemon}")
+                print(e)
+                continue
+            # print(pokemon_art)
+            write_pokemon_to_file(pokemon,pokemon_art)
+            # break
 
 def write_pokemon_to_file(pokemon,pokemon_art):
-    with open(f'{pokemon}.txt','w') as file:
+    with open(f'./pokeart/{pokemon}.txt','w') as file:
         file.write(pokemon_art)
 
 def get_pokemon_art(pokemon):
@@ -22,7 +31,7 @@ def get_pokemon_art(pokemon):
 
     # loading in image
     path = f'./images/{pokemon}.png'
-    original_image = io.imread(path,as_gray=False)
+    original_image = io.imread(path)
     image_cropped = crop_image_to_content(original_image)
     # doubling on the width axis as characters are not as wide as they are high
     image = np.repeat(image_cropped,2,1)
@@ -48,7 +57,7 @@ def get_pokemon_art(pokemon):
                 old_color=new_color
 
             pokemon_art+=f'{color_escape}{string_matrix[i,j]}'
-    pokemon_art+='\033[0m'
+    pokemon_art+='\033[0m\n'
     return pokemon_art
 
 
