@@ -49,7 +49,7 @@ which should print out the help page for the program
 You can run the program from the command line to either display a pokemon of your
 choice by specifying the pokemon name or make it display a random pokemon.
 ```
-Usage: pokedex [OPTION] [POKEMON NAME]
+Usage: pokemon-colorscripts [OPTION] [POKEMON NAME]
   -h, --help, help    	Print this help.
   -l, --list, list    	Print list of all pokemon
   -r, --random, random	Show a random pokemon
