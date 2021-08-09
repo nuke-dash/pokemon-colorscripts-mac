@@ -5,7 +5,7 @@ import skimage.transform as tm
 
 def main():
     # pokemon_list = ['mimikyu','pawniard','unown','pikachu']
-    with open('./scrape/nameslist.txt','r') as names_file:
+    with open('../nameslist.txt','r') as names_file:
         pokemon_list = names_file.readlines()
         for pokemon in pokemon_list:
             pokemon=pokemon.strip()
