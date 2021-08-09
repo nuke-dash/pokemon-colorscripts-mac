@@ -10,7 +10,7 @@ def main():
         for pokemon in pokemon_list:
             pokemon=pokemon.strip()
             try:
-                pokemon_art=get_pokemon_art(pokemon)
+                pokemon_art=get_pokemon_art(pokemon,with_resize=True)
             except Exception as e:
                 # raise Exception()
                 print(f"couldn't generate art for {pokemon}")
@@ -37,7 +37,7 @@ def get_pokemon_art(pokemon,with_resize=False):
     # whether to scale down images that are too large.leads to loss in quality
     if with_resize:
         height,width,channels = image_cropped.shape
-        height_threshold=28
+        height_threshold=32
         if height>height_threshold:
             print(f'{pokemon} too large')
             image_cropped=tm.resize(image_cropped,(int(height/1.5),int(width/1.5),channels),anti_aliasing=False)
