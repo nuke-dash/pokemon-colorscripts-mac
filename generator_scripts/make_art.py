@@ -1,37 +1,52 @@
+""" A script that makes unicode art out of images. Used to make unicode art of
+pokemon sprites for printing out to the terminal
+
+Author: Phoney Badger (https://gitlab.com/phoneybadger)
+(c) 08-08-2021
+
+Usage:
+-run the shell script that downloads all the pokemon images
+-adjust the paths in the main function of this script
+-run the script. It should output the correct color files
+"""
 import skimage.io as io
 import numpy as np
 import skimage.transform as tm
-# import matplotlib.pyplot as plt
 
 def main():
-    # pokemon_list = ['mimikyu','pawniard','unown','pikachu']
-    with open('../nameslist.txt','r') as names_file:
+    # PATHS FOR ALL THE RELEVANT FILES
+    path_to_nameslist = '../nameslist.txt' #path to the names list
+    path_to_images = '../images'            # path to the directory containting images
+    output_path = '../test_images'          # path to the directory to output images to
+
+    # Open the names list and generate test files for all the pokemon in the list
+    with open(path_to_nameslist,'r') as names_file:
         pokemon_list = names_file.readlines()
         for pokemon in pokemon_list:
             pokemon=pokemon.strip()
             try:
-                pokemon_art=get_pokemon_art(pokemon,with_resize=True)
+                pokemon_art=get_pokemon_art(pokemon,path_to_images,with_resize=True)
             except Exception as e:
                 # raise Exception()
                 print(f"couldn't generate art for {pokemon}")
                 print(e)
                 continue
             # print(pokemon_art)
-            write_pokemon_to_file(pokemon,pokemon_art)
+            write_pokemon_to_file(pokemon,pokemon_art,output_path)
             # break
 
-def write_pokemon_to_file(pokemon,pokemon_art):
-    with open(f'./test_art/{pokemon}.txt','w') as file:
+def write_pokemon_to_file(pokemon,pokemon_art,output_path):
+    with open(f'{output_path}/{pokemon}.txt','w') as file:
         file.write(pokemon_art)
 
-def get_pokemon_art(pokemon,with_resize=False):
+def get_pokemon_art(pokemon,path_to_images,with_resize=False):
     """ Takes the name of a pokemon and prints out its art"""
 
     # string to hold the color formatted string
     pokemon_art=''
 
     # loading in image
-    path = f'./images/{pokemon}.png'
+    path = f'{path_to_images}/{pokemon}.png'
     original_image = io.imread(path)
     image_cropped = crop_image_to_content(original_image)
     # whether to scale down images that are too large.leads to loss in quality
