@@ -29,8 +29,8 @@ _show_random_pokemon(){
 
     # total number of art files present
     NUM_ART=$(ls -1 $POKEART_DIR|wc -l)
-    # getting a random index from 0-NUM_ART
-    random_index=$(($RANDOM%$NUM_ART))
+    # getting a random index from 0-NUM_ART. (using shuf instead of $RANDOM for POSIX compliance)
+    random_index=$(shuf -i 1-$NUM_ART -n 1)
     random_pokemon=$(sed $random_index'q;d' $POKELIST_DIR'/nameslist.txt')
     echo $random_pokemon
 
@@ -49,7 +49,6 @@ _list_pokemon_names(){
     cat $POKELIST_DIR'/nameslist.txt'|less
 }
 
-printf "%b\n" $#
 # Handling command line arguments
 case "$#" in
     0)
@@ -76,8 +75,6 @@ case "$#" in
         ;;
 
     2)
-        echo running case
-        echo $1
         if [ "$1" = '-n' ]||[ "$1" = '--name' ]||[ "$1" = 'name' ]; then
             _show_pokemon_by_name "$2"
         else
