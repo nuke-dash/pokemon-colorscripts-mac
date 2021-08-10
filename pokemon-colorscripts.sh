@@ -1,7 +1,7 @@
 #!/bin/sh
 
 
-PROGRAM=$(readlink -f "$0")
+PROGRAM=$(greadlink -f "$0")
 PROGRAM_DIR=$(dirname "$PROGRAM")
 # directory where all the art files exist
 POKEART_DIR="$PROGRAM_DIR/colorscripts"
@@ -30,9 +30,9 @@ _show_random_pokemon(){
     #selecting a random art file from the whole set
 
     # total number of art files present
-    NUM_ART=$(ls -1 "$POKEART_DIR"|wc -l)
-    # getting a random index from 0-NUM_ART. (using shuf instead of $RANDOM for POSIX compliance)
-    random_index=$(shuf -i 1-$NUM_ART -n 1)
+    NUM_ART=$(ls -1 "$POKEART_DIR"|wc -l| xargs)
+    # getting a random index from 0-NUM_ART. (using gshuf instead of $RANDOM for POSIX compliance)
+    random_index=$(gshuf -i 1-$NUM_ART -n 1)
     random_pokemon=$(sed $random_index'q;d' "$PROGRAM_DIR/nameslist.txt")
     echo $random_pokemon
 
