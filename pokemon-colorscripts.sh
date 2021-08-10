@@ -49,6 +49,7 @@ _list_pokemon_names(){
     cat $POKELIST_DIR'/nameslist.txt'|less
 }
 
+printf "%b\n" $#
 # Handling command line arguments
 case "$#" in
     0)
@@ -75,7 +76,9 @@ case "$#" in
         ;;
 
     2)
-        if [[ "$1" = "-n" || "$1" = "--name" || "$1" = "name" ]]; then
+        echo running case
+        echo $1
+        if [ "$1" = '-n' ]||[ "$1" = '--name' ]||[ "$1" = 'name' ]; then
             _show_pokemon_by_name "$2"
         else
             echo "Input error"
