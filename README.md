@@ -1,10 +1,10 @@
 # Pokemon colorscripts
 
-some scripts to print out images of pokemons to terminal. Inspired by 
+some scripts to print out images of pokemons to terminal. Inspired by
 [DT's colorscripts compilation](https://gitlab.com/dwt1/shell-color-scripts)
 
 ## Description
-Prints out colored unicode sprites of pokemon onto your terminal. Contains 
+Prints out colored unicode sprites of pokemon onto your terminal. Contains
 almost 900 pokemon from gen 1 to gen 8. Has all the pokemons you could ever want
 (okay it doesn't have shiny pokemon or different forms, but cut me some slack)
 
@@ -24,9 +24,11 @@ demo of the program running on terminal startup.
 ![screenshot](./demo_images/demo_3.png)
 
 ## Requirements
-The program itself is just a bash script that prints out custom color formatted 
-text files. You will however need a terminal with true color support, which most
-modern terminals have. More on terminals and color support can be found in 
+The program itself is just a shell script that prints out custom color formatted
+text files.So as long as you have a POSIX compliant shell like dash,bash,zsh etc.
+as your `/bin/sh` the script should work.
+You will however need a terminal with true color support, which most
+modern terminals have. More on terminals and color support can be found in
 [this gist](https://gist.github.com/XVilka/8346728)
 
 ## Installation
@@ -87,8 +89,8 @@ being symlinked to usr/bin/
 ## How it works
 The program itself is a simple bash script that prints out text files corresponding
 to the relevant pokemon or a randomly selected pokemon. The textfiles formatted with
-appropriate colors can be found in the *colorscripts* folder of the repo. The sprites 
-were taken from [pokemondb](https://pokemondb.net/sprites) and were converted into text 
+appropriate colors can be found in the *colorscripts* folder of the repo. The sprites
+were taken from [pokemondb](https://pokemondb.net/sprites) and were converted into text
 files using a custom python script after some preprocessing. A simple script to
 scrape and download all the sprites, and the python script to convert these sprites into properly formatted and colored
 text files are also included in the repo and can be found in the *generator_scripts* folder.
