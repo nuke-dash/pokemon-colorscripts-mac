@@ -1,8 +1,10 @@
 #!/bin/sh
 
+
+PROGRAM=$(readlink -f "$0")
+PROGRAM_DIR=$(dirname "$PROGRAM")
 # directory where all the art files exist
-POKEART_DIR='/usr/local/opt/pokemon-colorscripts/colorscripts'
-POKELIST_DIR='/usr/local/opt/pokemon-colorscripts'
+POKEART_DIR="$PROGRAM_DIR/colorscripts"
 # formatting for the help strings
 fmt_help="  %-20s\t%-54s\n"
 
@@ -28,25 +30,25 @@ _show_random_pokemon(){
     #selecting a random art file from the whole set
 
     # total number of art files present
-    NUM_ART=$(ls -1 $POKEART_DIR|wc -l)
+    NUM_ART=$(ls -1 "$POKEART_DIR"|wc -l)
     # getting a random index from 0-NUM_ART. (using shuf instead of $RANDOM for POSIX compliance)
     random_index=$(shuf -i 1-$NUM_ART -n 1)
-    random_pokemon=$(sed $random_index'q;d' $POKELIST_DIR'/nameslist.txt')
+    random_pokemon=$(sed $random_index'q;d' "$PROGRAM_DIR/nameslist.txt")
     echo $random_pokemon
 
     # print out the pokemon art for the pokemon
-    cat $POKEART_DIR'/'$random_pokemon'.txt'
+    cat "$POKEART_DIR/$random_pokemon.txt"
 }
 
 _show_pokemon_by_name(){
     pokemon_name=$1
     echo $pokemon_name
     # Error handling. Can't think of a better way to do it
-    cat $POKEART_DIR'/'$pokemon_name'.txt' 2>/dev/null || echo "Invalid pokemon"
+    cat "$POKEART_DIR/$pokemon_name.txt" 2>/dev/null || echo "Invalid pokemon"
 }
 
 _list_pokemon_names(){
-    cat $POKELIST_DIR'/nameslist.txt'|less
+    cat "$PROGRAM_DIR/nameslist.txt"|less
 }
 
 # Handling command line arguments
