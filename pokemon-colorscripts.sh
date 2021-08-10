@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 
 # directory where all the art files exist
 POKEART_DIR='/usr/local/opt/pokemon-colorscripts/colorscripts'
@@ -7,7 +7,7 @@ POKELIST_DIR='/usr/local/opt/pokemon-colorscripts'
 fmt_help="  %-20s\t%-54s\n"
 
 
-function _help(){
+_help(){
     #Function that prints out the help text
 
     echo "Description: CLI utility to print out unicode image of a pokemon in your shell"
@@ -24,7 +24,7 @@ function _help(){
     echo "Example: 'pokemon-colorscripts --name pikachu'"
 }
 
-function _show_random_pokemon(){
+_show_random_pokemon(){
     #selecting a random art file from the whole set
 
     # total number of art files present
@@ -38,14 +38,14 @@ function _show_random_pokemon(){
     cat $POKEART_DIR'/'$random_pokemon'.txt'
 }
 
-function _show_pokemon_by_name(){
+_show_pokemon_by_name(){
     pokemon_name=$1
     echo $pokemon_name
     # Error handling. Can't think of a better way to do it
     cat $POKEART_DIR'/'$pokemon_name'.txt' 2>/dev/null || echo "Invalid pokemon"
 }
 
-function _list_pokemon_names(){
+_list_pokemon_names(){
     cat $POKELIST_DIR'/nameslist.txt'|less
 }
 
@@ -57,7 +57,7 @@ case "$#" in
         ;;
     1)
         # Check flag and show appropriate output
-        case "$1" in
+        case $1 in
             -h | --help | help)
                 _help
                 ;;
@@ -75,7 +75,7 @@ case "$#" in
         ;;
 
     2)
-        if [[ "$1" == "-n" || "$1" == "--name" || "$1" == "name" ]]; then
+        if [[ "$1" = "-n" || "$1" = "--name" || "$1" = "name" ]]; then
             _show_pokemon_by_name "$2"
         else
             echo "Input error"
